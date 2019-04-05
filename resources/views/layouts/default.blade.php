@@ -21,7 +21,6 @@
             height: 100vh;
             margin: 0;
         }
-
     </style>
     <script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
 </head>
@@ -29,8 +28,7 @@
 <body>
     @include( 'inc.navbar')
     <main role="main" class="container">
-        @include('inc.messages')
-        @yield('content')
+    @include('inc.messages') @yield('content')
     </main>
 </body>
 

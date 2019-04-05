@@ -20,22 +20,24 @@ Route::get('/hello', function () {
     return '<h1>Hello World </h1>';
 });
 
-Route::get( '/about', function(){
-    return view('about') ;
+Route::get('/about', function () {
+    return view('about');
 });
 
 
-Route::get( '/userx/{id}', function($id){
-    return "this is the user $id" ;
-    return view('about') ;
+Route::get('/userx/{id}', function ($id) {
+    return "this is the user $id";
+    return view('about');
 });
 
 
-Route::get( '/userx/{id}/{name}', function($id, $name){
-    return "this is the user $id with $name" ;
-    return view('about') ;
+Route::get('/userx/{id}/{name}', function ($id, $name) {
+    return "this is the user $id with $name";
+    return view('about');
 });
 
-Route::get('/pages', 'PagesController@index') ;
-Route::get('/pages/about', 'PagesController@about') ;
-Route::get('/pages/services', 'PagesController@services') ;
+Route::get('/pages', 'PagesController@index');
+Route::get('/pages/about', 'PagesController@about');
+Route::get('/pages/services', 'PagesController@services');
+
+Route::resource('posts', 'PostsController');
