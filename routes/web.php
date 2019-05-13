@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', function () {
+Route::get('/welcome', function () {
     return view('welcome');
 });
 
@@ -20,24 +20,31 @@ Route::get('/hello', function () {
     return '<h1>Hello World </h1>';
 });
 
-Route::get('/about', function () {
-    return view('about');
-});
-
 
 Route::get('/userx/{id}', function ($id) {
     return "this is the user $id";
     return view('about');
 });
 
-
 Route::get('/userx/{id}/{name}', function ($id, $name) {
     return "this is the user $id with $name";
     return view('about');
 });
 
-Route::get('/pages', 'PagesController@index');
+
+Route::get('/about', function () {
+    return view('about');
+});
+
+## Pages
+Route::get('/', 'PagesController@index');
 Route::get('/pages/about', 'PagesController@about');
 Route::get('/pages/services', 'PagesController@services');
 
+##user
+Auth::routes();
+Route::get('/home', 'UserController@index')->name('home');
+
+##controllers
+### Posts
 Route::resource('posts', 'PostsController');
