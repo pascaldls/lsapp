@@ -48,3 +48,5 @@ Route::get('/home', 'UserController@index')->name('home');
 ##controllers
 ### Posts
 Route::resource('posts', 'PostsController');
+##customers
+Route::resource('customers', 'CustomersController');

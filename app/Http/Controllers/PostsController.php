@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Post;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
 
 class PostsController extends Controller
 {
@@ -45,7 +44,7 @@ class PostsController extends Controller
     {
         $this->validate($request, [
             'title' => 'required',
-            'body' => 'required'
+            'body' => 'required',
         ]);
 
         $post = new Post();
@@ -93,7 +92,7 @@ class PostsController extends Controller
     {
         $this->validate($request, [
             'title' => 'required',
-            'body' => 'required'
+            'body' => 'required',
         ]);
 
         $post = Post::find($id);
