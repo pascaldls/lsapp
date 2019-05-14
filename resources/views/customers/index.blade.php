@@ -13,12 +13,16 @@
     {{ Form::text('name', old('name'), ['class'=>'form-control', 'placeholder'=>'Name']) }}
 </div>
 <div class="form-group">
-    {{ Form::label('title', 'email') }}
+    {{ Form::label('email', 'Email') }}
     {{ Form::text('email', old('email'), ['class'=>'form-control', 'placeholder'=>'Email']) }}
 </div>
 <div class="form-group">
-    {{ Form::label('title', 'Active') }}
+    {{ Form::label('active', 'Active') }}
     {{ Form::select('active',  [ '' => 'please Choose', '1' => 'active', '0' => 'inactive' ], ['class'=>'form-control', 'placeholder'=>'Email']) }}
+</div>
+<div class="form-group">
+    {{ Form::label('sample', 'Sample') }}
+    {{ Form::text('sample',  old('sample') , ['class'=>'form-control', 'placeholder'=>'Sample']) }}
 </div>
 {{-- {{ Form::hidden('author', $post->author ) }} --}}
 {{ Form::submit('Submit', ['class' => 'btn btn-primary' ]) }}

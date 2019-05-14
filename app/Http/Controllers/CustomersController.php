@@ -51,11 +51,15 @@ class CustomersController extends Controller
             'active' => 'required',
         ]);
 
-        $customer = new Customers();
-        $customer->name = request('name');
-        $customer->email = request('email');
-        $customer->active = request('active');
-        $customer->save();
+        // $customer = new Customers($data);
+        // $customer->name = request('name');
+        // $customer->email = request('email');
+        // $customer->active = request('active');
+        // $customer->save();
+
+        // mass assign
+        $customer = Customers::create($data);
+
         return back();
     }
 

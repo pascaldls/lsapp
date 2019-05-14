@@ -30,8 +30,11 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Customers extends Model
 {
-    //
+    // Fillable mass assign enable
+    protected $fillable = ['name', 'email', 'active'];
 
+    // cannot be mass assign
+    protected $guarded = [];
     /**
      * scopeActive
      *
