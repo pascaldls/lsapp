@@ -12,6 +12,7 @@ class CustomersController extends Controller
     public function __construct()
     {
 
+        $this->middleware('test');
         $this->middleware('auth')->except(['index']);
     }
 
