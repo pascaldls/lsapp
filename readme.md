@@ -1,5 +1,10 @@
 ## installation
 
+### post put patch method
+
+{!! Form::open(['action' => ['CustomersController@update', $customer->id], 'method'=>'PUT']) !!}
+dont forget to \$customer->id
+
 ### publishing vendror
 
 php artisan vendor:publish

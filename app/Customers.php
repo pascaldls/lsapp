@@ -38,6 +38,18 @@ class Customers extends Model
 
     // cannot be mass assign
     protected $guarded = [];
+
+    // default values
+    protected $attributes = [
+        'active' => 0
+    ];
+
+    public $options = [
+        'active' => [
+            0 => 'Inactive',
+            1 => 'Active'
+        ]
+    ];
     /**
      * scopeActive
      *
@@ -58,6 +70,11 @@ class Customers extends Model
     public function scopeInActive($query)
     {
         return $query->where('active', 0);
+    }
+
+    public function getActiveAttribute($attribute)
+    {
+        return $this->options['active'][$attribute];
     }
 
     public function company()

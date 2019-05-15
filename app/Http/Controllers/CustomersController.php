@@ -19,6 +19,8 @@ class CustomersController extends Controller
 
         // $activeCustomers = Customers::where('active', 1)->get();
 
+        $customers = Customers::all();
+
         $activeCustomers = Customers::active()->get();
 
         // $inactiveCustomers = Customers::where('active', 0)->get();
@@ -27,15 +29,7 @@ class CustomersController extends Controller
 
         $companies = Company::all();
 
-        // dd(
-        //     (
-        //         ['' => 'Please Select'] + $companies->mapWithKeys(function ($company) {
-        //             return [$company->id => $company->name];
-        //         })->toArray()
-        //     )
-        // );
-
-        return view('customers.index', compact('activeCustomers', 'inactiveCustomers', 'companies'));
+        return view('customers.index', compact('activeCustomers', 'inactiveCustomers', 'companies', 'customers'));
     }
 
     /**
@@ -45,7 +39,28 @@ class CustomersController extends Controller
      */
     public function create()
     {
-        //
+        $companies = Company::all();
+        $customer = new Customers();
+
+        // dd($customer->active);
+
+        return view('customers.create', compact('activeCustomers', 'inactiveCustomers', 'companies', 'customer'));
+    }
+
+    /**
+     * validation for this controller
+     *
+     * @param Request $request
+     * @return array
+     */
+    private function validateRequest(Request $request)
+    {
+        return request()->validate([
+            'name' => 'required|min:3',
+            'email' => 'required',
+            'active' => 'required',
+            'company_id' => 'required',
+        ]);
     }
 
     /**
@@ -56,12 +71,7 @@ class CustomersController extends Controller
      */
     public function store(Request $request)
     {
-        $data = request()->validate([
-            'name' => 'required|min:3',
-            'email' => 'required',
-            'active' => 'required',
-            'company_id' => 'required',
-        ]);
+        $data = $this->validateRequest($request);
 
         // dd($data);
         // dd(request());
@@ -75,7 +85,9 @@ class CustomersController extends Controller
         // mass assign
         $customer = Customers::create($data);
 
-        return back();
+        // return back();
+
+        return redirect('customers');
     }
 
     /**
@@ -84,9 +96,9 @@ class CustomersController extends Controller
      * @param  \App\Customers  $customers
      * @return \Illuminate\Http\Response
      */
-    public function show(Customers $customers)
+    public function show(Customers $customer)
     {
-        //
+        return view('customers.show', compact('customer'));
     }
 
     /**
@@ -95,9 +107,10 @@ class CustomersController extends Controller
      * @param  \App\Customers  $customers
      * @return \Illuminate\Http\Response
      */
-    public function edit(Customers $customers)
+    public function edit(Customers $customer)
     {
-        //
+        $companies = Company::all();
+        return view('customers.edit', compact('customer', 'companies'));
     }
 
     /**
@@ -107,9 +120,15 @@ class CustomersController extends Controller
      * @param  \App\Customers  $customers
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Customers $customers)
+    public function update(Request $request, Customers $customer)
     {
-        //
+
+        // dd($customer);
+        $data = $this->validateRequest($request);
+
+        $customer->update($data);
+
+        return redirect('customers/' . $customer->id);
     }
 
     /**
@@ -118,8 +137,9 @@ class CustomersController extends Controller
      * @param  \App\Customers  $customers
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Customers $customers)
+    public function destroy(Customers $customer)
     {
-        //
+        $customer->delete();
+        return redirect('customers');
     }
 }

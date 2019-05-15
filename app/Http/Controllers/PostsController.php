@@ -50,7 +50,7 @@ class PostsController extends Controller
         $post = new Post();
         $post->title = $request->input('title');
         $post->body = $request->input('body');
-        $post->author = 1;
+        // $post->author = 1;
         $post->save();
         return redirect('/posts')
             ->with('success', 'Post Created')
@@ -98,7 +98,7 @@ class PostsController extends Controller
         $post = Post::find($id);
         $post->title = $request->input('title');
         $post->body = $request->input('body');
-        $post->author = 1;
+        // $post->author = 1;
         $post->save();
         return redirect('/posts')
             ->with('success', 'Post Updated')
