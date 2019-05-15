@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Company;
 use App\Customers;
 use Illuminate\Http\Request;
 
@@ -24,7 +25,17 @@ class CustomersController extends Controller
 
         $inactiveCustomers = Customers::inActive()->get();
 
-        return view('customers.index', compact('activeCustomers', 'inactiveCustomers'));
+        $companies = Company::all();
+
+        // dd(
+        //     (
+        //         ['' => 'Please Select'] + $companies->mapWithKeys(function ($company) {
+        //             return [$company->id => $company->name];
+        //         })->toArray()
+        //     )
+        // );
+
+        return view('customers.index', compact('activeCustomers', 'inactiveCustomers', 'companies'));
     }
 
     /**
@@ -49,7 +60,11 @@ class CustomersController extends Controller
             'name' => 'required|min:3',
             'email' => 'required',
             'active' => 'required',
+            'company_id' => 'required',
         ]);
+
+        // dd($data);
+        // dd(request());
 
         // $customer = new Customers($data);
         // $customer->name = request('name');

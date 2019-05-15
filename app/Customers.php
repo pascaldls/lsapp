@@ -27,11 +27,14 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Customers whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Customers active()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Customers inActive()
+ * @property int $company_id
+ * @property-read \App\Company $company
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Customers whereCompanyId($value)
  */
 class Customers extends Model
 {
     // Fillable mass assign enable
-    protected $fillable = ['name', 'email', 'active'];
+    // protected $fillable = ['name', 'email', 'active'];
 
     // cannot be mass assign
     protected $guarded = [];
@@ -55,5 +58,10 @@ class Customers extends Model
     public function scopeInActive($query)
     {
         return $query->where('active', 0);
+    }
+
+    public function company()
+    {
+        return $this->belongsTo(Company::class);
     }
 }

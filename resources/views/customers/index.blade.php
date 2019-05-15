@@ -24,6 +24,17 @@
     {{ Form::label('sample', 'Sample') }}
     {{ Form::text('sample',  old('sample') , ['class'=>'form-control', 'placeholder'=>'Sample']) }}
 </div>
+
+<div class="form-group">
+    {{ Form::label('company_id', 'Company') }}
+    {{ Form::select('company_id',
+        (
+            [ '' => 'Please Select'] + $companies->mapWithKeys(function ($company) {
+                return [$company->id => $company->name];
+            })->toArray()
+        ), ['class'=>'form-control', 'placeholder'=>'Please Select']) }}
+</div>
+
 {{-- {{ Form::hidden('author', $post->author ) }} --}}
 {{ Form::submit('Submit', ['class' => 'btn btn-primary' ]) }}
 {!! Form::close() !!}
@@ -35,6 +46,7 @@
             @foreach ($activeCustomers as $customer)
             <li>
                 {{$customer->name}} - {{ $customer->email}} : {{ ( $customer->active == 1 ? 'Active' : 'Inactive'  ) }}
+                | {{$customer->company->name}}
             </li>
             @endforeach
         </ul>
@@ -47,6 +59,20 @@
             </li>
             @endforeach
         </ul>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        @foreach ( $companies as $company)
+        <h3> {{$company->name}} </h3>
+        <ul>
+            @foreach ( $company->customers as $customer )
+            <li> {{$customer->name}} - {{ $customer->email}} : {{ ( $customer->active == 1 ? 'Active' : 'Inactive'  ) }}
+                | {{$customer->company->name}} </li>
+            @endforeach
+        </ul>
+        @endforeach
     </div>
 </div>
 
