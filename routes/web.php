@@ -46,7 +46,13 @@ Auth::routes();
 Route::get('/home', 'UserController@index')->name('home');
 
 ##controllers
+
+##Contact
+Route::resource('contact', 'ContactController');
+
 ### Posts
 Route::resource('posts', 'PostsController');
 ##customers
+// Route::resource('customers', 'CustomersController')->middleware('auth');
+
 Route::resource('customers', 'CustomersController');

@@ -31,6 +31,9 @@
             <li class="nav-item">
                 <a class="nav-link disabled" href="/welcome" tabindex="-1" aria-disabled="true">Disabled</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link " href="/contact">Contact Us</a>
+            </li>
         </ul>
         <!-- Right Side Of Navbar -->
         <ul class="navbar-nav ml-auto">
