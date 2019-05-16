@@ -31,15 +31,15 @@ class CustomersController extends Controller
 
         // $activeCustomers = Customers::where('active', 1)->get();
 
-        $customers = Customers::with('company')->get();
+        $customers = Customers::with('company')->paginate(5);
 
-        $activeCustomers = Customers::with('company')->active()->get();
+        $activeCustomers = Customers::with('company')->active()->paginate(5);
 
         // $inactiveCustomers = Customers::where('active', 0)->get();
 
-        $inactiveCustomers = Customers::with('company')->inActive()->get();
+        $inactiveCustomers = Customers::with('company')->inActive()->paginate(5);
 
-        $companies = Company::with('customers')->get();
+        $companies = Company::with('customers')->paginate(5);
         // $activeCustomers = [];
         // $inactiveCustomers = [];
         // $companies = [];

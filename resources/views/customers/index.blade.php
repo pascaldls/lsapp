@@ -18,6 +18,7 @@
     <div class="col col-sm-1"> {{$customer->active}} </div>
 </div>
 @endforeach
+{{ $customers->links() }}
 
 <p><a class="btn btn-primary" href="/customers/create"> Create Customers </a></p>
 <div class="row">
@@ -30,6 +31,7 @@
             </li>
             @endforeach
         </ul>
+        {{ $activeCustomers->links() }}
     </div>
     <div class="col-6 ">
         <ul>
@@ -39,6 +41,7 @@
             </li>
             @endforeach
         </ul>
+        {{ $inactiveCustomers->links() }}
     </div>
 </div>
 
@@ -53,6 +56,7 @@
             @endforeach
         </ul>
         @endforeach
+        {{ $companies->links() }}
     </div>
 </div>
 
