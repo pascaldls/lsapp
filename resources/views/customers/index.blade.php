@@ -9,9 +9,14 @@
 <div class="row">
     <div class="col col-sm-1"> {{$customer->id}} </div>
     <div class="col col-sm-3">
+        @can('view', $customer)
         <a href="/customers/{{$customer->id}}">
             {{$customer->name}}
         </a>
+        @endcan
+        @cannot('view', $customer)
+        {{$customer->name}}
+        @endcan
     </div>
     <div class="col col-sm-3"> {{$customer->email}} </div>
     <div class="col col-sm-3"> {{$customer->company->name}} </div>
@@ -20,7 +25,9 @@
 @endforeach
 {{ $customers->links() }}
 
+@can('create', App\Customers::class)
 <p><a class="btn btn-primary" href="/customers/create"> Create Customers </a></p>
+@endcan
 <div class="row">
     <div class="col-6 ">
         <ul>
