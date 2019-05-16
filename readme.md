@@ -1,5 +1,31 @@
 ## installation
 
+### Queue
+
+php artisan queue:table
+php artisan migrate
+do all quered jobs
+php artisan queue:work
+
+QUEUE_CONNECTION=database
+
+#background
+php artisan queue:work &
+give process id
+
+jobs
+see running
+
+jobs -l
+give process id
+
+kill ##id
+kill the process id
+
+#storage
+
+php artisan queue:work > storage/logs/jobs.log &
+
 ### post put patch method
 
 {!! Form::open(['action' => ['CustomersController@update', $customer->id], 'method'=>'PUT']) !!}

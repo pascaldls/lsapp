@@ -6,7 +6,7 @@ use App\Events\NewCustomerHasRegistedEvent;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class RegisterCustomerToNewLetterListener
+class RegisterCustomerToNewLetterListener implements ShouldQueue
 {
     /**
      * Create the event listener.
@@ -26,6 +26,7 @@ class RegisterCustomerToNewLetterListener
      */
     public function handle(NewCustomerHasRegistedEvent $event)
     {
+        sleep(10);
         //
         // Register
         dump('Register to news letter ');

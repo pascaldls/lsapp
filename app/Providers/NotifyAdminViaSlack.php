@@ -6,7 +6,7 @@ use App\Events\NewCustomerHasRegistedEvent;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class NotifyAdminViaSlack
+class NotifyAdminViaSlack implements ShouldQueue
 {
     /**
      * Create the event listener.
@@ -26,6 +26,7 @@ class NotifyAdminViaSlack
      */
     public function handle(NewCustomerHasRegistedEvent $event)
     {
+        sleep(10);
         //
         // slack notification to admin
         dump(' Slack Message Here');
