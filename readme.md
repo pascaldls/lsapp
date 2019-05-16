@@ -1,3 +1,15 @@
+## Resizing files
+
+composer require intervention/image
+
+#check if integrated with laravel  
+artisan package:discover
+
+# install gd library if need in php
+
+sudo apt-get install php-gd
+sudo systemctl restart apache
+
 ## installation
 
 ### Queue

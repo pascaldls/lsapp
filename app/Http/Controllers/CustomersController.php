@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\WelcomeNewUserMail;
 use App\Events\NewCustomerHasRegistedEvent;
+use Intervention\Image\Facades\Image;
 
 class CustomersController extends Controller
 {
@@ -81,6 +82,10 @@ class CustomersController extends Controller
             $customer->update([
                 'image' => request()->image->store('uploads', 'public'),
             ]);
+
+            $image = Image::make(public_path('storage/') . $customer->image)->fit(300, 300, null, 'top-left');
+            // crop
+            $image->save();
         }
     }
 
