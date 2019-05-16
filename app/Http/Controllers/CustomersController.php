@@ -31,17 +31,25 @@ class CustomersController extends Controller
 
         // $activeCustomers = Customers::where('active', 1)->get();
 
-        $customers = Customers::all();
+        $customers = Customers::with('company')->get();
 
-        $activeCustomers = Customers::active()->get();
+        $activeCustomers = Customers::with('company')->active()->get();
 
         // $inactiveCustomers = Customers::where('active', 0)->get();
 
-        $inactiveCustomers = Customers::inActive()->get();
+        $inactiveCustomers = Customers::with('company')->inActive()->get();
 
-        $companies = Company::all();
+        $companies = Company::with('customers')->get();
+        // $activeCustomers = [];
+        // $inactiveCustomers = [];
+        // $companies = [];
 
-        return view('customers.index', compact('activeCustomers', 'inactiveCustomers', 'companies', 'customers'));
+        return view('customers.index', compact(
+            'activeCustomers',
+            'inactiveCustomers',
+            'companies',
+            'customers'
+        ));
     }
 
     /**

@@ -1,3 +1,26 @@
+## Telescope
+
+Laravel Telescope provides incredible feedback on what is going on behind the scenes with your application.
+It is an extremely powerful tool but very simple to install. Follow along as we install and do an overview on Laravel Telescope.
+
+Laravel Telescope
+https://laravel.com/docs/5.8/telescope
+
+composer require laravel/telescope
+
+php artisan telescope:install
+
+php artisan migrate
+
+--dev optinal
+
+#problems
+sudo add-apt-repository ppa:ondrej/php
+sudo apt update
+sudo apt install php-bcmath
+sudo apt install php7.2-bcmath
+sudo systemctl restart apache
+
 ## Resizing files
 
 composer require intervention/image
@@ -20,6 +43,8 @@ do all quered jobs
 php artisan queue:work
 
 QUEUE_CONNECTION=database
+
+look into redis
 
 #background
 php artisan queue:work &
