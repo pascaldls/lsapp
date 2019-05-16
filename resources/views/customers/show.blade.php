@@ -6,7 +6,7 @@
 
 <h1> Customer </h1>
 
-<a href="/customers/{{$customer->id}}/edit" class="btn btn-primary"> Edit </a>
+<a href="{{ route('customers.edit', ['customer' => $customer->id ]) }}" class="btn btn-primary"> Edit </a>
 
 {!! Form::open(['action' => ['CustomersController@destroy', $customer->id], 'method'=>'DELETE']) !!}
 {{ Form::submit('Delete', ['class' => 'btn btn-danger' ]) }}

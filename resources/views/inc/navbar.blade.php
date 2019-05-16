@@ -8,31 +8,32 @@
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="{{ url('/', []) }}">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/about">About</a>
+                <a class="nav-link" href="{{ url('about', []) }}">About</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/posts">Posts</a>
+                <a class="nav-link" href="{{ route('posts.index') }}">Posts</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/customers"> Customers </a>
+                <a class="nav-link" href="{{ route('customers.index') }}"> Customers </a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true"
                     aria-expanded="false"> Pages</a>
                 <div class="dropdown-menu" aria-labelledby="dropdown01">
-                    <a class="dropdown-item" href="/pages/about">about<a>
-                            <a class="dropdown-item" href="/pages/services">services</a>
+                    <a class="dropdown-item" href="{{ url('pages/about', []) }}">about<a>
+                            <a class="dropdown-item" href="{{ url('pages/services', []) }}">services</a>
                             <a class="dropdown-item" href="#">Something else here</a>
                 </div>
             </li>
             <li class="nav-item">
-                <a class="nav-link disabled" href="/welcome" tabindex="-1" aria-disabled="true">Disabled</a>
+                <a class="nav-link disabled" href="{{ url('welcome', []) }}" tabindex="-1"
+                    aria-disabled="true">Disabled</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link " href="/contact">Contact Us</a>
+                <a class="nav-link " href="{{ action('ContactController@index') }}">Contact Us</a>
             </li>
         </ul>
         <!-- Right Side Of Navbar -->
