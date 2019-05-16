@@ -29,4 +29,5 @@ Artisan::command('contact:company-clean', function () {
         $company->delete();
         $this->warn('Deleted ' . $company->name);
     });
+    factory(\App\Company::class, 10)->create();
 })->describe('Clean Up unsed companies ');

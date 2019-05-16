@@ -66,12 +66,22 @@ class CustomersController extends Controller
      */
     private function validateRequest(Request $request)
     {
-        return request()->validate([
+        return  request()->validate([
             'name' => 'required|min:3',
             'email' => 'required',
             'active' => 'required',
             'company_id' => 'required',
+            'image' => 'sometimes|file|image|max:5000'
         ]);
+    }
+
+    private function storeImage($customer)
+    {
+        if (request()->has('image')) {
+            $customer->update([
+                'image' => request()->image->store('uploads', 'public'),
+            ]);
+        }
     }
 
     /**
@@ -96,11 +106,11 @@ class CustomersController extends Controller
         // mass assign
         $customer = Customers::create($data);
 
+        $this->storeImage($customer);
         // return back();
 
         event(new NewCustomerHasRegistedEvent($customer));
 
-        dd();;
         return redirect('customers');
     }
 
@@ -141,6 +151,7 @@ class CustomersController extends Controller
         $data = $this->validateRequest($request);
 
         $customer->update($data);
+        $this->storeImage($customer);
 
         return redirect('customers/' . $customer->id);
     }

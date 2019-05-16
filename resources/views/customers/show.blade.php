@@ -19,7 +19,9 @@
         <p> <strong>Email </strong> {{ $customer-> email }} </p>
         <p> <strong>Active </strong> {{ $customer-> active }} </p>
         <p> <strong>Company </strong> {{ $customer-> company -> name  }} </p>
+        @if ( $customer->image )
+        <p> <img src="{{ asset( '/storage/' . $customer->image )}}" class="img-thumbnail" /> </p>
+        @endif
     </div>
 </div>
-
 @endsection

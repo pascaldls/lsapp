@@ -31,5 +31,11 @@
         ['class'=>'form-control', 'placeholder'=>'Please Select'])
         }}
 </div>
+
+<div class="form-group">
+    {{ Form::label('image', 'Image') }}
+    {{ Form::file('image',  old('image') , ['class'=>'form-control' ]) }}
+</div>
+
 {{-- {{ Form::hidden('author', $post->author ) }} --}}
 {{ Form::submit('Submit', ['class' => 'btn btn-primary' ]) }}

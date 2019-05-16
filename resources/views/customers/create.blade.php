@@ -7,7 +7,7 @@
 <h1> Customer </h1>
 <h2> Create Customer </h2>
 
-{!! Form::open(['action' => ['CustomersController@update', ''], 'method'=>'POST']) !!}
+{!! Form::open(['action' => ['CustomersController@update', ''], 'method'=>'POST', 'files' =>true ]) !!}
 
 @include('customers.form')
 
