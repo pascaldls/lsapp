@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Company;
 use App\Customers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\WelcomeNewUserMail;
+use App\Events\NewCustomerHasRegistedEvent;
 
 class CustomersController extends Controller
 {
@@ -95,6 +98,9 @@ class CustomersController extends Controller
 
         // return back();
 
+        event(new NewCustomerHasRegistedEvent($customer));
+
+        dd();;
         return redirect('customers');
     }
 
