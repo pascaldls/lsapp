@@ -21,14 +21,14 @@ steps:
     sudo update-alternatives --set php-cgi /usr/bin/php-cgi$(phpVersion)
     sudo update-alternatives --set phar.phar /usr/bin/phar.phar$(phpVersion)
     php -version 
-  displayName: 'Use PHP version $(phpVersion) npm install and build'
+  displayName: 'Use PHP version $(phpVersion) '
 
-- script: composer install --no-interaction --prefer-dist
-  displayName: 'composer install'
+#- script: composer install --no-interaction --prefer-dist
+#  displayName: 'composer install'
 
 - script: |
-    npm install
     npm audit fix
-    npm run build
+#    npm install
+#    npm run build
   displayName: 'npm install and build' 
 
